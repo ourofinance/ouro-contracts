@@ -19,6 +19,7 @@ contract EmptyStrategy is Ownable, Pausable, ReentrancyGuard {
     using Address for address;
 
     /* ========== STATE VARIABLES ========== */
+
     // wbnb
     address public wbnb;
     // Dev address
@@ -29,6 +30,7 @@ contract EmptyStrategy is Ownable, Pausable, ReentrancyGuard {
     bool public isBNB;
 
     /* ========== CONSTRUCTOR ========== */
+
     constructor(address _devaddr, address _wantToken) public {
         wbnb = address(0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c);
 
@@ -43,6 +45,7 @@ contract EmptyStrategy is Ownable, Pausable, ReentrancyGuard {
     }
 
     /* ========== VIEW FUNCTIONS ========== */
+
     function deposit(uint256 _amount) public onlyOwner nonReentrant whenNotPaused returns (uint256) {
         if (isBNB) {
             _wrapBNB(_amount);
@@ -68,6 +71,7 @@ contract EmptyStrategy is Ownable, Pausable, ReentrancyGuard {
     }
 
     /* ========== GOVERNANCE ========== */
+
     function migrate(address _target) public onlyOwner {
         uint256 balance = IERC20(wantToken).balanceOf(address(this));
         IERC20(wantToken).safeTransfer(_target, balance);

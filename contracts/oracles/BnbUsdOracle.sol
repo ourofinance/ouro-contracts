@@ -15,15 +15,18 @@ contract BnbUsdOracle is Ownable {
     using SafeCast for int256;
 
     /* ========== STATE VARIABLES ========== */
+
     // Chainlink BNB/USD price feeder
     address public bnbUsdFeeder;
 
     /* ========== CONSTRUCTOR ========== */
+
     constructor() public {
         bnbUsdFeeder = address(0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE);
     }
 
     /* ========== VIEW FUNCTIONS ========== */
+
     function getBnbUsdPrice() public view returns (uint256, uint256) {
         AggregatorV3Interface _bnbUsdFeeder = AggregatorV3Interface(bnbUsdFeeder);
         // (
@@ -42,6 +45,7 @@ contract BnbUsdOracle is Ownable {
     }
 
     /* ========== GOVERNANCE ========== */
+
     function setBnbUsdFeeder(address _bnbUsdFeeder) public onlyOwner {
         require(_bnbUsdFeeder.isContract(), "bnb usd feeder invalid");
 

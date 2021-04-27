@@ -15,12 +15,14 @@ contract ChainlinkOracle is BnbUsdOracle {
     using SafeCast for int256;
 
     /* ========== STATE VARIABLES ========== */
+
     // Chainlink price feeder, maybe bnb base or usd base
     address public feeder;
     // feeder is usd base
     bool public usdBase;
 
     /* ========== CONSTRUCTOR ========== */
+
     constructor(address _feeder, bool _usdBase) public {
         require(_feeder.isContract(), "feeder invalid");
 
@@ -31,6 +33,7 @@ contract ChainlinkOracle is BnbUsdOracle {
     /* ========== VIEW FUNCTIONS ========== */
 
     /* ========== GOVERNANCE ========== */
+
     function setFeeder(address _feeder, bool _usdBase) public onlyOwner {
         require(_feeder.isContract(), "feeder invalid");
 
