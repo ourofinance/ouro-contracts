@@ -1,0 +1,11 @@
+node_modules/
+cache/
+build/
+typechain/
+artifacts/
+abis/
+coverage*
+.env
+deployments/
+.DS_Store
+.openzeppelin/
